@@ -1,0 +1,29 @@
+<h1>Index of Articles</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% rawNum = 0 %>
+    <% @articles.each do |article| %>
+        <tr>
+            <% rawNum = rawNum + 1 %>
+            <td> <%= rawNum %> </td>
+            <td> <%= article.title  %> </td>
+            <td> <%= article.description  %> </td>
+            <td> <%= article.author %>  </td>
+            <th> Placeholder </th>
+        </tr>
+    <% end %>
+    </tbody>
+
+
+</table>
