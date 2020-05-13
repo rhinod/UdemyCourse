@@ -1,5 +1,55 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.navbar {
-    background-color: red !important;
+
+
+
+/*=================================
+Top navigation bar
+/*===============================*/
+
+.nav-link {
+    font-size: 1em;
 }
+
+.navbar-brand {
+    text-transform: uppercase;
+}
+
+
+
+/*=================================
+Sticky footer
+/*===============================*/
+
+#sticky-footer {
+    position: absolute;
+    bottom: 0;
+    width: 97%;
+    height: 50px;
+    background-color: lightgray;
+    vertical-align: center;
+    text-align: center;
+    padding-top: 15px;
+}
+/*=================================
+pages # home
+/*===============================*/
+
+.jumbotron {
+
+    margin-top: 100px;
+    padding-top: 90px;
+    background-image: asset-url('news.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 500px;
+    color:red;
+
+    p, h1 {
+        background:black;
+        padding: 10px;
+        width: fit-content;
+    }
+}
+
+
