@@ -1,34 +1,23 @@
-<h1>Index of Articles</h1>
-<a href="articles/new">Create new article</a>
-<table>
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th colspan="3">Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-    <% rawNum = 0 %>
+<h1>Articulos publicados</h1>
+<div class="row">
+    
     <% @articles.each do |article| %>
-        <tr>
-            <% rawNum = rawNum + 1 %>
-            <td> <%= rawNum %> </td>
-            <td> <%= article.id %> </td>
-            <td> <%= article.title  %> </td>
-            <td> <%= article.description  %> </td>
-            <td> <%= article.author %>  </td>
-            <td> <%= link_to 'Show', article_path(article.id)  %> </td>
-            <td> <%= link_to 'Edit', edit_article_path(article.id)  %> </td>
-            <td> <%= link_to 'Delete', article_path(article.id), method: :delete, data: { confirm: "Are you sure?" } %>   </td>
-        </tr>
-    <% end %>
-    </tbody>
-</table>
-<a href="articles/new"> Crear nuevo articulo  (HTML tag) </a>
+        <div class="card text-center col-sm-4">
+        <div class="card-header">
+            Publicado por: <%= article.author %>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> <%= article.title %> </h5>
+            <p class="card-text"> <%= article.description %> </p>
+            <%= link_to 'Editar', edit_article_path(article.id), class: "btn btn-success" %>
+            <%= link_to 'Show', article_path(article.id), class: "btn btn-success" %>
+            <%= link_to 'Delete', article_path(article.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 
-<p><%= link_to 'Create new article (Ruby Tag)', new_article_path %></p>
+        </div>
+        <div class="card-footer text-muted">
+            Última edición hace: <%= (((Time.now - article.updated_at).abs)/86400).round %> días
+        </div>  
+        </div>
+    <% end %>
+
+</div>

@@ -2,7 +2,6 @@
 
 
 
-
 /*=================================
 Top navigation bar
 /*===============================*/
@@ -21,16 +20,45 @@ Top navigation bar
 Sticky footer
 /*===============================*/
 
-#sticky-footer {
-    position: absolute;
-    bottom: 0;
-    width: 97%;
-    height: 50px;
-    background-color: lightgray;
-    vertical-align: center;
-    text-align: center;
-    padding-top: 15px;
+html {
+    height: 100%;
 }
+  
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+}
+
+
+
+#content {
+  background-color: #e3f2fd;
+  flex: 1;
+  padding: 0px;
+}
+
+#footer {
+  background-color: #f3e5f5;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer::before {
+  content: '';
+  position: absolute;
+  background: #f3e5f5;
+  z-index: 10;
+  height: 58px;
+  width: 33px;
+  left: -33px;
+  top: 0px;
+}
+
+
 /*=================================
 pages # home
 /*===============================*/
@@ -52,4 +80,19 @@ pages # home
     }
 }
 
+/*=================================
+article # index
+/*===============================*/
+
+a .btn {
+  color:white; 
+}
+
+.card {
+  margin-bottom: 5px;
+}
+
+.row {
+  padding-bottom: 25px;
+}
 
