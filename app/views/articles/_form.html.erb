@@ -1,19 +1,22 @@
-<%= render 'errors' %>
-
-<%= form_with(model: @article,  local: true) do |f| %>
-
-    <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </p>
-    <p>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-    </p>
-
-
-<% end %>
+<div class="container p-4  shadow mb-5 rounded" id="new-edit-form">
+    <%= render 'shared/errors' %>
+    
+    <%= form_with(model: @article,  local: true) do |f| %>
+        <div class="form-group row">
+            <%= f.label :title, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+                <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Titulo del artículo" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <%= f.label :description, class: "col-2 col-form-label  text-light" %>
+            <div class="col-10">
+                <%= f.text_area :description, rows: 10 , class: "form-control shadow rounded", placeholder: "Descripción el articulo" %>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <%= f.submit class: "btn btn-outline-light btn-lg shadow rounded" %>
+        </div>
+    <% end %>
+</div>
+<%= link_to '[Cancel and return to the articles]', articles_path, class: "text-info text-center" %>

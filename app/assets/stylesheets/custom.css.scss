@@ -84,15 +84,36 @@ pages # home
 article # index
 /*===============================*/
 
+
 a .btn {
   color:white; 
 }
 
 .card {
   margin-bottom: 5px;
+  overflow: hidden;
 }
 
 .row {
   padding-bottom: 25px;
 }
 
+.card-header {
+  width: 110%;
+  position: relative;
+  left: -15px;
+}
+
+.card-footer {
+  width: 110%;
+  position: relative;
+  left: -15px;
+}
+
+/*=================================
+article # form
+/*===============================*/
+
+#new-edit-form {
+  background: rgb(129, 127, 240); 
+}
