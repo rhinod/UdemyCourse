@@ -3,7 +3,7 @@
     <% @articles.each do |article| %>
         <div class="card text-center col-sm-4">
             <div class="card-header">
-                Publicado por: <%= article.author %>
+                Publicado por: <%= article.user.username %>
             </div>
             <div class="card-body">
                 <h5 class="card-title"> <%= article.title %> </h5>

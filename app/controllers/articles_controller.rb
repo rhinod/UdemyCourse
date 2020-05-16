@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   def create
     #render plain: params[:article]
     @article = Article.new(article_params)
-    
+    @article.user_id = User.first.id
     if  @article.save
       flash[:notice] = "Article created successfully!"
       @article = Article.last

@@ -2,7 +2,7 @@
     <h2 class="text-center p-4"><%= @article.title %></h2>
     <div class="card text-center col-sm-12">
         <div class="card-header">
-            Publicado por: <%= @article.author %>
+            Publicado por: <%= @article.user.username %>
         </div>
         <div class="card-body">
             <div class="card-text text-left"> <%= simple_format(@article.description) %> </div>
