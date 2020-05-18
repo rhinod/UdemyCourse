@@ -2,7 +2,9 @@
     <h2 class="text-center p-4"><%= @article.title %></h2>
     <div class="card text-center col-sm-12">
         <div class="card-header">
-            Publicado por: <%= @article.user.username %>
+            Publicado por: <%= link_to @article.user.username, user_path(@article.user) %><br>
+            <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+
         </div>
         <div class="card-body">
             <div class="card-text text-left"> <%= simple_format(@article.description) %> </div>
