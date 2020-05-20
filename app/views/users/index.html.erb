@@ -1,4 +1,8 @@
 <h1 class="text-center mt-4"> Lista de usuarios </h1>
+
+<%= render 'shared/pagination', obj: @users %>
+
+
 <div class="row">
     <% @users.each do |user| %>
         <div class="card text-center col-sm-4">
@@ -21,3 +25,5 @@
         </div>
     <% end %>
 </div>
+
+<%= render 'shared/pagination', obj: @users %>
