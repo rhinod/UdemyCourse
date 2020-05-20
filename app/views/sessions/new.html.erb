@@ -1,0 +1,25 @@
+<h1 class="text-center mt-4">Login to alpha blog</h1>
+<div class="container p-4  shadow mb-5 rounded" id="new-edit-form">
+    
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+        <div class="form-group row">
+            <%= f.label :email, class: "col-2 col-form-label  text-light" %>
+            <div class="col-10">
+                <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Ingrese su correo" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :password, class: "col-2 col-form-label  text-light" %>
+            <div class="col-10">
+                <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Ingrese su contraseña" %>
+            </div>
+        </div>
+
+        <div class="form-group row justify-content-center">
+            <%= f.submit "Login", class: "btn btn-outline-light btn-lg shadow rounded" %>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to '[Cancel and return to the home]', users_path, class: "text-info text-center" %>

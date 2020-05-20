@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+    before_action :set_user, only: [:show, :edit, :update]
+  
     def new
-      @user = User.new 
+      @user = User.new
     end
 
     def index
@@ -9,16 +11,13 @@ class UsersController < ApplicationController
     end
 
     def show
-      @user = User.find(params[:id])
       @articles = @user.articles.paginate(page: params[:page], per_page: 6)
     end
 
     def edit
-      @user = User.find(params[:id])
     end
 
     def update
-      @user = User.find(params[:id])
       if @user.update(user_params)
         flash[:notice] = "Tu cuenta ha sido actualizada"
         redirect_to @user
@@ -31,6 +30,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
+        session[:user_id] = @user.id
         flash[:notice] = "Bienvenido a alphablog #{@user.username}"
         redirect_to root_path
       else
@@ -38,12 +38,15 @@ class UsersController < ApplicationController
       end
     end
 
-    
-
     private 
     def user_params
       params.require(:user).permit(:username,:email,:password)
     end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+    
 end
 
 
