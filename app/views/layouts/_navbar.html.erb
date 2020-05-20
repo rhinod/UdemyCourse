@@ -47,7 +47,7 @@
 
         <form class="form-inline my-2 my-lg-0">
             <% if logged_in? %>
-                <%= link_to 'Logout', root_path, class:"btn btn-outline-success my-2 my-sm-0" %>
+                <%= link_to 'Logout', logout_path, class:"btn btn-outline-danger my-2 my-sm-0", method: :delete %>
             <% else %>
                 <%= link_to 'Login', login_path, class:"btn btn-outline-success my-2 my-sm-0" %>
             <% end %>
