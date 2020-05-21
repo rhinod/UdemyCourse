@@ -24,23 +24,27 @@
                     Articulos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to 'Nuevo', new_article_path, class: "dropdown-item" %>
-                    <!--<a class="dropdown-item" href="#">Nuevo</a>-->
+                    <% if logged_in? %>
+                        <%= link_to 'Nuevo', new_article_path, class: "dropdown-item" %>
+                    <% end %>
                     <%= link_to 'Ver todos', articles_path, class: "dropdown-item" %>
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item disabled" href="#">Algo que no sirve</a>
                 </div>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-
             <% if logged_in? %>
-                <%= link_to current_user.username, user_path(current_user.id), class: "nav-link" %>
-            <% else %>
-                <%= link_to 'Signup', signup_path, class:"btn btn-outline-success my-2 my-sm-0" %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= current_user.username %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to 'Mi perfil', user_path(current_user) , class: "dropdown-item" %>
+                    <%= link_to 'Edit my profile', edit_user_path(current_user), class: "dropdown-item" %>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item disabled" href="#">Algo que no sirve</a>
+                </div>
+            <li>
             <% end %>
             
         </ul>
