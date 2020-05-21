@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     def destroy
       @user.destroy
-      session[:user_id] = nil
+      session[:user_id] = nil if @user == current_user
       flash[:alert] = "You have destroyed your account"
       redirect_to articles_path
     end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if @user != current_user
+      if @user != current_user && !current_user.admin?
         flash[:alert] = "You are not allowed to do that"
         redirect_to users_path
       end
