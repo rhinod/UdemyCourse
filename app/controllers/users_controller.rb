@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update]
-  
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+
     def new
       @user = User.new
     end
@@ -28,7 +30,6 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params)
-
       if @user.save
         session[:user_id] = @user.id
         flash[:notice] = "Bienvenido a alphablog #{@user.username}"
@@ -36,6 +37,13 @@ class UsersController < ApplicationController
       else
         render 'new'
       end
+    end
+
+    def destroy
+      @user.destroy
+      session[:user_id] = nil
+      flash[:alert] = "You have destroyed your account"
+      redirect_to articles_path
     end
 
     private 
@@ -46,7 +54,14 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-    
+
+    def require_same_user
+      if @user != current_user
+        flash[:alert] = "You are not allowed to do that"
+        redirect_to users_path
+      end
+    end
+
 end
 
 
