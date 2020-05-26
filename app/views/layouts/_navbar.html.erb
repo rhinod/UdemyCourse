@@ -33,6 +33,26 @@
                     <a class="dropdown-item disabled" href="#">Algo que no sirve</a>
                 </div>
             </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categorias
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    <%= link_to 'Todas las categorias...', categories_path, class: "dropdown-item" %>
+                    <div class="dropdown-divider"></div>
+                    <% Category.all.each do |category|%>
+                    <%= link_to category.name, category_path(category), class: "dropdown-item" %>
+                    <% end %>
+                    <% if logged_in? && current_user.admin? %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to 'Crear nueva categoria', new_category_path , class: "dropdown-item" %>
+                    <% end %>
+                </div>
+            </li>
+
+
             <% if logged_in? %>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
