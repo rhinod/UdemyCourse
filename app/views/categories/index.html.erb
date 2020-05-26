@@ -1,0 +1,16 @@
+<h1 class="text-center mt-4">Articulos publicados</h1>
+
+<%= render 'shared/pagination', obj: @categories %>
+
+<div class="row">
+    <% @categories.each do |category| %>
+        <div class="card text-center col-sm-4">
+            <div class="card-body">
+                <h5 class="card-title"> <%= link_to category.name, category_path(category), class: "text-success" %> </h5>
+            </div>
+            <div class="card-footer text-muted">
+                Created <%= time_ago_in_words(category.created_at) %> ago
+            </div>  
+        </div>
+    <% end %>
+</div>

@@ -5,10 +5,11 @@ class CategoriesController < ApplicationController
     end
 
     def index
+      @categories = Category.paginate(page: params[:page], per_page: 3) 
     end
 
     def show
-      @category = Category.findby(params)
+      @category = Category.find(params[:id])
     end
 
     def create
@@ -16,7 +17,7 @@ class CategoriesController < ApplicationController
 
         if @category.save
           flash[:notice] = "Categoria hecha"
-          redirect_to @category
+          redirect_to categories_path
         else
           render 'new'
         end
