@@ -1,1 +1,8 @@
 <h1 class="text-center mt-4">Categoria: <%= @category.name %></h1>
+
+<%= render 'shared/pagination', obj: @category_articles %>
+
+<%= render 'articles/articles', obj: @category_articles %>
+
+<%= render 'shared/pagination', obj: @category_articles %>
+
