@@ -8,6 +8,9 @@
             <div class="card-body">
                 <h5 class="card-title"> <%= link_to category.name, category_path(category), class: "text-success" %> </h5>
                 <li><small> <%= pluralize(category.articles.count, "article") %> </small></li>
+                <% if logged_in? && current_user.admin? %>
+                    <%= link_to 'Editar', edit_category_path(category.id), class: "btn btn-outline-info" %>
+                <% end %>
             </div>
             
             <div class="card-footer text-muted">
